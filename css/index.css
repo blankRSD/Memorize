@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+}
+body
+{
+    background-color:#bfbfbf;
+    background-image: url("../assets/back.jpg");
+    background-size: 100% 120%;
+    background-repeat: no-repeat;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+h1
+{
+    text-align: center;
+}
+.row::after 
+{
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] 
+{
+    float: left;
+    padding: 5px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 23.5%;}
+.col-4 {width: 30%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+html 
+{
+    font-family: "Lucida Sans", sans-serif;
+}
+.header 
+{
+    margin:0 auto;
+    background:rgba(0,0,0,0.3);
+    box-shadow: 0px 5px 10px 0px #000; 
+    color: white;
+    padding:0.5px;
+    text-align:center;
+    margin-bottom: 10px;
+    font-family: 'Rock Salt', cursive;
+}
+.cardbox
+{
+    background:#fff;
+    box-shadow: 0px 5px 10px 0px #888888;  
+    height: 470px;
+    margin:20px;
+    background:rgba(0,0,0,0.3);
+    box-shadow: 0px 5px 10px 0px #000;
+}
+.card
+{
+    background:rgba(0,0,0,0.3);
+    box-shadow: 0px 5px 10px 0px #000;  
+    height: 470px;
+    margin-top:20px;
+    font-family: 'Tangerine', cursive;
+    font-size:33px;
+    color:white;
+}
+.right ul
+{
+    text-align: justify;
+}
+.right ul li
+{
+    list-style:none;
+    font-size: 45px;
+    font-weight: 600;
+}
+#reload
+{
+    cursor: pointer;
+}
+.colorbox
+{
+    background-color: #33b5e5;
+    /*background:rgba(0,0,0,0.3);*/
+    box-shadow: 0px 5px 10px 0px #000;
+    /*box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
+    height: 107px;
+    margin:2px;
+    text-align: center;
+    font-size: 50px;
+    cursor: pointer;
+    line-height: 100px;
+    width:100%;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-weight:600;
+}
+.hide
+{
+    display:none;
+}
+.flip3D
+{
+    height: 107px;
+    margin:2px;
+    position:relative;
+}
+.front, .back
+{
+     position:absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.5s;
+}
+.front{
+    background-color:rgba(128, 51, 229, 0.87);
+}
+.back{
+    background-color:rgba(50, 225, 18, 0.63);
+   -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+.flip3D.flipped .front {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.flip3D.flipped .back {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0);
+}
+@media only screen and (max-width: 720px) 
+{
+    .col-3
+    {
+        width: 23%;
+    }
+    .box
+    {
+        margin:0;
+    }
+    .col-1
+    {
+        display: none;
+    }
+    .col-6
+    {
+        width: 100%;
+        margin:auto;
+        margin-bottom:10px; 
+        margin-top:10px;
+       
+    }
+    .header
+    {
+        width:100%;
+    }
+    .card
+    {
+        width:100%;
+        height:200px;
+        margin-top:auto;
+        font-weight: 200;
+        font-size: 20px;
+        font-family: serif;
+    }
+    .flip3D,.colorbox
+    {
+        height:77px;
+        line-height: 75px;
+        margin:2px;
+    }
+    .cardbox
+    {
+        height:350px;
+    }
+    .right ul li
+    {
+        font-size: 20px;
+    }   
+    h2
+    {
+        margin-top:0px;
+        margin-bottom:0px;
+    }
+}
