@@ -44,6 +44,11 @@ html
 {
     font-family: "Lucida Sans", sans-serif;
 }
+img
+{
+    height:100px;
+    width:100px;
+}
 .header 
 {
     margin:0 auto;
@@ -86,7 +91,7 @@ html
     font-size: 45px;
     font-weight: 600;
 }
-#reload
+#easy,#diff
 {
     cursor: pointer;
 }
@@ -143,10 +148,10 @@ html
 }
 @media only screen and (max-width: 720px) 
 {
-	 body
-	 {
-	 	background-image: url("../assets/backmobile1.jpg");
-	 }
+     body
+     {
+        background-image: url("../assets/backmobile1.jpg");
+     }
     .col-3
     {
         width: 23%;
@@ -199,5 +204,10 @@ html
     {
         margin-top:0px;
         margin-bottom:0px;
+    }
+    img
+    {
+    	height:50px;
+    	width:50px;
     }
 }

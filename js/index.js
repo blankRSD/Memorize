@@ -1,17 +1,27 @@
 var score=0;
 var clicks=0;
 $(document).ready(function(){
-	init();
-	$("#reload").click(function(){
+	var n;
+	$("#easy").click(function(){
 		score=0;
 		clicks=0;
 		for(var i=0;i<usedAlpha.length;i++)
 			usedAlpha[i]=false;
 		for(var i=0;i<randBox.length;i++)
 			randBox[i]=false;
-		init();
+		init(1);
+		n=1;
 	});
-});
+	$("#diff").click(function(){
+		score=0;
+		clicks=0;
+		for(var i=0;i<usedAlpha.length;i++)
+			usedAlpha[i]=false;
+		for(var i=0;i<randBox.length;i++)
+			randBox[i]=false;
+		init(2);n=2;
+	});
+
 var usedAlpha=new Array(9);
 var newAlpha=new Array(16);
 var randBox=new Array(16);
@@ -20,29 +30,52 @@ var card_values = [];
 var card_ids = [];
 var cards_flipped = 0;
 
-function NewCard()	//For placing alphabets in cards
+function NewCard(n)	//For placing alphabets in cards
 { 
 	for(var i=0; i<8; i++)
 	{
-		newAlpha[i+8]=newAlpha[i]=NewAlpha();
+		newAlpha[i+8]=newAlpha[i]=NewAlpha(n);
 	}
-	for(var i=0;i<16;i++)
+	if(n==1)
 	{
-		document.getElementById(GenerateId()).innerHTML=newAlpha[i];
+		for(var i=0;i<16;i++)
+		{
+			document.getElementById(GenerateId()).innerHTML=newAlpha[i];
+		}
+	}
+	else if(n==2)
+	{
+		for(var i=0;i<16;i++)
+		{
+			document.getElementById(GenerateId()).innerHTML='<img src="'+ newAlpha[i].img +'" id="'+newAlpha[i].name+'">';
+		}
 	}
 }
 
-function NewAlpha()		//For generating random alphabets
+function NewAlpha(n)		//For generating random alphabets
 {
 	var alphabet=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 	var newNum;
-	do
+	if(n==1)
 	{
-		newNum=Math.floor(Math.random()*26);
-	}while(usedAlpha[newNum]);
+		do
+		{
+			newNum=Math.floor(Math.random()*26);
+		}while(usedAlpha[newNum]);
 
-	usedAlpha[newNum]=true;
-	return alphabet[newNum];
+		usedAlpha[newNum]=true;
+		return alphabet[newNum];
+	}
+	else if(n==2)
+	{
+		do
+		{
+			newNum=Math.floor(Math.random()*8);
+		}while(usedAlpha[newNum]);
+
+		usedAlpha[newNum]=true;
+		return pics[newNum];
+	}
 }
 function GenerateId()		//For generating random ids
 {
@@ -58,25 +91,29 @@ function GenerateId()		//For generating random ids
 
 function Disable(id1,id2)		//For disabling a pair of cards
 {
-	$("#"+id1).parent().css({"background":"rgba(111,21,231,0.0)","color":"white"}).parent().removeClass("box");
+	$("#"+id1).parent().css({"background":"rgba(255,255,255,0.5)","color":"white"}).parent().removeClass("box");
 	$("#"+id1).contents().unwrap();
 	
-	$("#"+id2).parent().css({"background":"rgba(111,21,231,0.0)","color":"white"}).parent().removeClass("box");
+	$("#"+id2).parent().css({"background":"rgba(255,255,255,0.5)","color":"white"}).parent().removeClass("box");
 	$("#"+id2).contents().unwrap();
 }
 
 function cardFlip()			//For flipping two cards and checking
 {
-
-	val=$(this).children().children().text();
+	if(n==1)
+	{
+		val=$(this).children().children().text();
+	}
+	else if(n==2)
+	{
+		val=$(this).children().children().children().attr("id");
+	}
 	id=$(this).children().children().attr("id");
 
 	if(val && card_values.length < 2)
 	{
 		//$(this).children().toggleClass("hide");
-		
 		flip(this);
-		
 		if(card_values.length == 0)
 		{
 			card_values.push(val);
@@ -145,10 +182,10 @@ function AddCards()
 	}
 	$('.cardbox').html(card);
 }
-function init()
+function init(n)
 {
 	AddCards();
-	NewCard();
+	NewCard(n);
 	$("#turns").text("Turns = "+clicks);
 	$("#score").text("Score = "+(score-clicks));
 	for(var i=0;i<16;i++)
@@ -156,3 +193,4 @@ function init()
 		document.getElementsByClassName("box")[i].onclick=cardFlip;
 	}
 }
+});
