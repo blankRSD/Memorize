@@ -177,8 +177,9 @@ html
         height:200px;
         margin-top:auto;
         font-weight: 200;
-        font-size: 20px;
+        font-size: 18px;
         font-family: serif;
+        padding-left: 0;
     }
     .flip3D,.colorbox
     {
