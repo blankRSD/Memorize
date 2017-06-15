@@ -91,11 +91,22 @@ function GenerateId()		//For generating random ids
 
 function Disable(id1,id2)		//For disabling a pair of cards
 {
-	$("#"+id1).parent().css({"background":"rgba(255,255,255,0.5)","color":"white"}).parent().removeClass("box");
-	$("#"+id1).contents().unwrap();
-	
-	$("#"+id2).parent().css({"background":"rgba(255,255,255,0.5)","color":"white"}).parent().removeClass("box");
-	$("#"+id2).contents().unwrap();
+	if(n==1)
+	{
+		$("#"+id1).parent().css({"background":"rgba(255,255,255,0.0)","color":"white"}).parent().removeClass("box");
+		$("#"+id1).contents().unwrap();
+		
+		$("#"+id2).parent().css({"background":"rgba(255,255,255,0.0)","color":"white"}).parent().removeClass("box");
+		$("#"+id2).contents().unwrap();
+	}
+	else if(n==2)
+	{
+		$("#"+id1).parent().css({"background":"rgba(255,255,255,0.5)","color":"white"}).parent().removeClass("box");
+		$("#"+id1).contents().unwrap();
+		
+		$("#"+id2).parent().css({"background":"rgba(255,255,255,0.5)","color":"white"}).parent().removeClass("box");
+		$("#"+id2).contents().unwrap();
+	}
 }
 
 function cardFlip()			//For flipping two cards and checking
@@ -137,8 +148,7 @@ function cardFlip()			//For flipping two cards and checking
 				// Check to see if the whole board is cleared
 				if(cards_flipped == 16)
 				{
-					//alert("Final Score: "+(score-clicks));
-					$(".blank").text();
+					alert("Game Complete!!! Thank You for playing :-) Choose a level to continue.");
 				}
 			} 
 			else 
